@@ -18,13 +18,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnIniciar.setOnClickListener {
-            IniciarCronometro()
-        }
+        binding.btnIniciar.setOnClickListener { IniciarCronometro() }
 
-        binding.btnPausar.setOnClickListener {
-            PausarCronometro()
-        }
+        binding.btnPausar.setOnClickListener { PausarCronometro() }
+
+        binding.btnReiniciar.setOnClickListener { ZerarCronometro() }
     }
 
     private fun IniciarCronometro(){
@@ -41,5 +39,10 @@ class MainActivity : AppCompatActivity() {
             pause = SystemClock.elapsedRealtime() - binding.cronometro.base
             running = false
         }
+    }
+
+    private fun ZerarCronometro(){
+        binding.cronometro.base = SystemClock.elapsedRealtime()
+        pause = 0
     }
 }
